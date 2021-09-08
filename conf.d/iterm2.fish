@@ -45,9 +45,8 @@ if not set -q -g iterm2_hostname
     # hostname -f is fast on macOS so don't cache it. This lets us get an updated version when
     # it changes, such as if you attach to a VPN.
     if test (uname) != Darwin
-        set -g iterm2_hostname (hostname -f 2>/dev/null)
         # some flavors of BSD (i.e. NetBSD and OpenBSD) don't have the -f option
-        if test $status -ne 0
+        if ! set -g iterm2_hostname (hostname -f 2>/dev/null)
             set -g iterm2_hostname (hostname)
         end
     end
