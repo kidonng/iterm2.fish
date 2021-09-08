@@ -40,17 +40,5 @@ else
     end
 end
 
-# If hostname -f is slow for you, set iterm2_hostname before sourcing this script
-if not set -q -g iterm2_hostname
-    # hostname -f is fast on macOS so don't cache it. This lets us get an updated version when
-    # it changes, such as if you attach to a VPN.
-    if test (uname) != Darwin
-        # some flavors of BSD (i.e. NetBSD and OpenBSD) don't have the -f option
-        if ! set -g iterm2_hostname (hostname -f 2>/dev/null)
-            set -g iterm2_hostname (hostname)
-        end
-    end
-end
-
 iterm2_write_remotehost_currentdir_uservars
 printf "\033]1337;ShellIntegrationVersion=15;shell=fish\007"
