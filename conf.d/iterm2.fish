@@ -9,7 +9,7 @@ end
 
 functions -c fish_prompt iterm2_fish_prompt
 
-if test (iterm2_has_fish_mode_prompt) = true
+if iterm2_has_fish_mode_prompt
     # Only override fish_mode_prompt if it is non-empty. This works around a problem created by a
     # workaround in starship: https://github.com/starship/starship/issues/1283
     functions -c fish_mode_prompt iterm2_fish_mode_prompt
